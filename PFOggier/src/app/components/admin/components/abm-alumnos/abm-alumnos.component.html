@@ -1,0 +1,76 @@
+<h2 mat-dialog-title [appSizeCabeceras]="estiloSize">{{titulo}}</h2>
+<hr/>
+<form (ngSubmit)="guardarAlumno()" [formGroup]="formularioAlumno">
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="ingrese el nombre del alumno" formControlName="nombre" [ngClass]="formularioAlumno.get('nombre')?.errors?.['required'] || 
+                            formularioAlumno.get('nombre')?.errors?.['minlength'] ? 'is-invalid':'is-valid'">
+                        <mat-error *ngIf="formularioAlumno.get('nombre')?.errors?.['required']">El campo nombre obligatorio.</mat-error>
+                        <mat-error *ngIf="formularioAlumno.get('nombre')?.errors?.['minlength']">El nombre debe contener mas de 4 letras.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Apellido</mat-label>
+                        <input matInput placeholder="Ingrese el apellido del alumno" formControlName="apellido" [ngClass]="formularioAlumno.get('apellido')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
+                        <mat-error *ngIf="formularioAlumno.get('apellido')?.errors?.['required']">El campo apellido obligatorio.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Edad</mat-label>
+                        <input matInput placeholder="Ingrese la edad del alumno" formControlName="edad" [ngClass]="formularioAlumno.get('edad')?.errors?.['required'] || formularioAlumno.get('edad')?.errors?.['pattern']? 'is-invalid':'is-valid'">
+                        <mat-error *ngIf="formularioAlumno.get('edad')?.errors?.['required']">El campo edad es obligatorio</mat-error>
+                        <mat-error *ngIf="formularioAlumno.get('edad')?.errors?.['pattern']">El campo edad debe ser numérico</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Email address</mat-label>
+                        <input matInput placeholder="Ingrese la email del alumno" formControlName="email" [ngClass]="formularioAlumno.get('email')?.errors?.['required'] || formularioAlumno.get('email')?.errors?.['email']? 'is-invalid':'is-valid'">
+                        <mat-error *ngIf="formularioAlumno.get('email')?.errors?.['required']">El campo email es obligatorio</mat-error>
+                        <mat-error *ngIf="formularioAlumno.get('email')?.errors?.['email']">El formato del correo es incorrecto</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Fecha Ingreso</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fechaIngreso" [ngClass]="formularioAlumno.get('fechaIngreso')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="formularioAlumno.get('fechaIngreso')?.errors?.['required']" class="form-text text-danger invalid-feedback">El campo fecha es obligatorio</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Celular</mat-label>
+                        <input matInput placeholder="Ingrese el celular del alumno" formControlName="celular" [ngClass]="formularioAlumno.get('celular')?.errors?.['required'] || 
+                            formularioAlumno.get('celular')?.errors?.['pattern']? 'is-invalid':'is-valid'">
+                        <mat-error *ngIf="formularioAlumno.get('celular')?.errors?.['required']" class="form-text text-danger invalid-feedback">El campo celular es obligatorio</mat-error>
+                        <mat-error *ngIf="formularioAlumno.get('celular')?.errors?.['pattern']" class="form-text text-danger invalid-feedback">El campo celular debe ser numérico</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button type="submit" [disabled]="formularioAlumno.invalid" class="btn btn-primary back-color" [mat-dialog-close]="true" cdkFocusInitial>guardar</button>
+    </mat-dialog-actions>
+</form>

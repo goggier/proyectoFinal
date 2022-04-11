@@ -9,6 +9,12 @@ import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 
 //MATERIAL
 import { AngularMaterialModule } from '../../material/angular-material/angular-material.module';
+import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.component';
+import { AbmAlumnosComponent } from './components/abm-alumnos/abm-alumnos.component';
+// FORMS AND REACTIVE FORMS
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormatoNombreApellidoPipe } from './shared/pipes/formato-nombre-apellido.pipe';
+import { SizeCabecerasDirective } from './shared/directivas/size-cabeceras.directive';
 
 
 @NgModule({
@@ -16,12 +22,18 @@ import { AngularMaterialModule } from '../../material/angular-material/angular-m
     //AdminComponent,
     LayoutComponent,
     SidenavComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ListaAlumnosComponent,
+    AbmAlumnosComponent,
+    FormatoNombreApellidoPipe,
+    SizeCabecerasDirective
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     LayoutComponent
