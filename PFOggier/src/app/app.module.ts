@@ -9,6 +9,8 @@ import { AdminModule } from './components/admin/admin.module';
 
 //COMPONENTES ANGULAR
 import { AdminComponent } from './components/admin/admin.component';
+import { AlumnoService } from './services/alumno.service';
+import { AlertaService } from './services/alerta.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { AdminComponent } from './components/admin/admin.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AlumnoService, AlertaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
