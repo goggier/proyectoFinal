@@ -19,7 +19,7 @@ import { SizeCabecerasDirective } from './shared/directivas/size-cabeceras.direc
 
 @NgModule({
   declarations: [
-    //AdminComponent,
+    AdminComponent,
     LayoutComponent,
     SidenavComponent,
     ToolbarComponent,

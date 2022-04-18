@@ -14,8 +14,7 @@ import { AlertaService } from './services/alerta.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AdminComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
