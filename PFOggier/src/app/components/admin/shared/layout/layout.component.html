@@ -6,7 +6,8 @@
         <app-toolbar [isHandset$]="isHandset$" [drawer]="drawer"></app-toolbar>
         <!-- Add Content Here -->
         <div class="main">
-            <app-lista-alumnos></app-lista-alumnos>
+            <router-outlet></router-outlet>
+            <!-- <app-lista-alumnos></app-lista-alumnos> -->
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

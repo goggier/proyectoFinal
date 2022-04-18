@@ -15,6 +15,7 @@ import { AbmAlumnosComponent } from './components/abm-alumnos/abm-alumnos.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormatoNombreApellidoPipe } from './shared/pipes/formato-nombre-apellido.pipe';
 import { SizeCabecerasDirective } from './shared/directivas/size-cabeceras.directive';
+import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { SizeCabecerasDirective } from './shared/directivas/size-cabeceras.direc
     ListaAlumnosComponent,
     AbmAlumnosComponent,
     FormatoNombreApellidoPipe,
-    SizeCabecerasDirective
+    SizeCabecerasDirective,
+    ListaCursosComponent
   ],
   imports: [
     CommonModule,
