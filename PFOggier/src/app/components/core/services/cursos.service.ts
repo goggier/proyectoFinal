@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Curso } from '../interfaces/Curso.interface';
 
 @Injectable({
@@ -55,7 +57,7 @@ export class CursosService {
   cursos$: Observable<Curso[]>;
   cursosPromise!: Promise<Curso[]>;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.cursos$ = of(this.listaCursos);
 
     this.cursosPromise = new Promise((resolve, reject) => {
@@ -69,6 +71,10 @@ export class CursosService {
 
   obtenerCursosPromise(){
     return this.cursosPromise;
+  }
+
+  obtenerDesdeApi():Observable<any> {
+    return this.http.get(`${environment.urlApi}/cursos`);
   }
 
   obtenerCursos(): Observable<Curso[]>{

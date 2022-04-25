@@ -8,15 +8,15 @@ import { SidenavComponent } from './shared/sidenav/sidenav.component';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 
 //MATERIAL
-import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.component';
-import { AbmAlumnosComponent } from './components/abm-alumnos/abm-alumnos.component';
 // FORMS AND REACTIVE FORMS
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.component';
+// import { ListaCursosComponent } from './components/cursos/lista-cursos/lista-cursos.component';
 
 // MODULOS
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
+import { CursosModule } from './components/cursos/cursos.module';
+import { AlumnosModule } from './components/alumnos/alumnos.module';
 
 
 @NgModule({
@@ -24,16 +24,15 @@ import { CoreModule } from '../core/core.module';
     AdminComponent,
     LayoutComponent,
     SidenavComponent,
-    ToolbarComponent,
-    ListaAlumnosComponent,
-    AbmAlumnosComponent,
-    ListaCursosComponent
+    ToolbarComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule,
     CoreModule,
+    CursosModule,
+    AlumnosModule,
     FormsModule,
     ReactiveFormsModule
   ],

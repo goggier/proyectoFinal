@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.component';
-import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.component';
+import { ListaAlumnosComponent } from './components/alumnos/lista-alumnos/lista-alumnos.component';
+import { ListaCursosComponent } from './components/cursos/lista-cursos/lista-cursos.component';
 
 const routes: Routes = [
   { path: '',

@@ -14,6 +14,7 @@ export class ListaCursosComponent implements OnInit, OnDestroy {
   cursosPromise!: Promise<Curso[]>;
   cursosObservable$!: Observable<Curso[]>
   cursoObservable: Curso[] = [];
+  curssos: Curso[] = [];
   cursoObservableFiltrado: Curso[] = [];
   datosSuscriptionObservable!: Subscription;
   datosSuscriptionObservableFiltrado!: Subscription;
@@ -28,14 +29,19 @@ export class ListaCursosComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.obtenerCursoPromesa();
     this.obtenerCursosObservables();
-    this.obtenerCursosObservablesFiltrados();
+    this.obtenerDesdeApi();
+  }
+
+  obtenerDesdeApi() {
+    this.cursoService.obtenerDesdeApi().subscribe((respuesta) => {
+      this.curssos = respuesta;
+      console.log('rta api:', this.curssos)
+    })
   }
 
   ngOnDestroy() {
     this.datosSuscriptionObservable.unsubscribe();
-    this.datosSuscriptionObservableFiltrado.unsubscribe();
   }
 
   obtenerCursosObservables(){
@@ -44,24 +50,4 @@ export class ListaCursosComponent implements OnInit, OnDestroy {
       this.cursoObservable = datos;
     });
   }
-
-  obtenerCursosObservablesFiltrados(){
-    this.cursosObservableFiltrados$ = this.cursoService.obtenerCursosFiltrados();
-    this.datosSuscriptionObservableFiltrado = this.cursosObservable$.subscribe((datos) => {
-      this.cursoObservable = datos;
-    });
-  }
-
-  obtenerCursoPromesa() {
-    this.cursosPromise = this.cursoService.obtenerCursosPromise();
-    this.cursosPromise.then((cursos) => {
-      this.cursosPromesa = cursos;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  }
-
-
-
 }
