@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import { Alumno } from 'src/app/interfaces/Alumno.interface';
-import { AlertaService } from 'src/app/services/alerta.service';
-import { AlumnoService } from 'src/app/services/alumno.service';
+import { Alumno } from 'src/app/components/core/interfaces/Alumno.interface';
+import { AlertaService } from 'src/app/components/core/services/alerta.service';
+import { AlumnoService } from 'src/app/components/core/services/alumno.service';
 import { AbmAlumnosComponent } from '../abm-alumnos/abm-alumnos.component';
 
 @Component({

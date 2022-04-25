@@ -8,14 +8,15 @@ import { SidenavComponent } from './shared/sidenav/sidenav.component';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 
 //MATERIAL
-import { AngularMaterialModule } from '../../material/angular-material/angular-material.module';
 import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.component';
 import { AbmAlumnosComponent } from './components/abm-alumnos/abm-alumnos.component';
 // FORMS AND REACTIVE FORMS
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormatoNombreApellidoPipe } from './shared/pipes/formato-nombre-apellido.pipe';
-import { SizeCabecerasDirective } from './shared/directivas/size-cabeceras.directive';
 import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.component';
+
+// MODULOS
+import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -26,14 +27,13 @@ import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.com
     ToolbarComponent,
     ListaAlumnosComponent,
     AbmAlumnosComponent,
-    FormatoNombreApellidoPipe,
-    SizeCabecerasDirective,
     ListaCursosComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    AngularMaterialModule,
+    SharedModule,
+    CoreModule,
     FormsModule,
     ReactiveFormsModule
   ],

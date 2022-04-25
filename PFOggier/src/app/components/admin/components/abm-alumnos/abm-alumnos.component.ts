@@ -1,9 +1,9 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Alumno } from 'src/app/interfaces/Alumno.interface';
+import { Alumno } from 'src/app/components/core/interfaces/Alumno.interface';
 import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlumnoService } from 'src/app/services/alumno.service';
-import { AlertaService } from 'src/app/services/alerta.service';
+import { AlumnoService } from 'src/app/components/core/services/alumno.service';
+import { AlertaService } from 'src/app/components/core/services/alerta.service';
 
 @Component({
   selector: 'app-abm-alumnos',

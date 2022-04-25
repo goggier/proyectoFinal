@@ -4,13 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialModule } from './material/angular-material/angular-material.module';
 import { AdminModule } from './components/admin/admin.module';
 
 //COMPONENTES ANGULAR
-import { AdminComponent } from './components/admin/admin.component';
-import { AlumnoService } from './services/alumno.service';
-import { AlertaService } from './services/alerta.service';
+import { SharedModule } from './components/shared/shared.module';
+import { CoreModule } from './components/core/core.module';
 
 @NgModule({
   declarations: [
@@ -20,12 +18,13 @@ import { AlertaService } from './services/alerta.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule,
+    SharedModule,
+    CoreModule,
     AdminModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AlumnoService, AlertaService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

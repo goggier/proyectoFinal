@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { Curso } from 'src/app/interfaces/Curso.interface';
-import { CursosService } from 'src/app/services/cursos.service';
+import { Curso } from 'src/app/components/core/interfaces/Curso.interface';
+import { CursosService } from 'src/app/components/core/services/cursos.service';
 
 @Component({
   selector: 'app-lista-cursos',
