@@ -17,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { CursosModule } from './components/cursos/cursos.module';
 import { AlumnosModule } from './components/alumnos/alumnos.module';
+import { InscripcionesModule } from './components/inscripciones/inscripciones.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AlumnosModule } from './components/alumnos/alumnos.module';
     SharedModule,
     CoreModule,
     CursosModule,
+    InscripcionesModule,
     AlumnosModule,
     FormsModule,
     ReactiveFormsModule

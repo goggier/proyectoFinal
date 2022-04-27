@@ -1,1 +1,57 @@
-<p>abm-cursos works!</p>
+<h2 mat-dialog-title [appSizeCabeceras]="estiloSize">{{titulo}}</h2>
+<hr/>
+<form (ngSubmit)="guardarCurso()" [formGroup]="formularioCurso">
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="ingrese el nombre del curso" formControlName="nombre" [ngClass]="formularioCurso.get('nombre')?.errors?.['required'] || 
+                        formularioCurso.get('nombre')?.errors?.['minlength'] ? 'is-invalid':'is-valid'">
+                        <mat-error *ngIf="formularioCurso.get('nombre')?.errors?.['required']">El campo nombre obligatorio.</mat-error>
+                        <mat-error *ngIf="formularioCurso.get('nombre')?.errors?.['minlength']">El nombre del curso debe contener mas de 4 letras.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Descripcion</mat-label>
+                        <input matInput placeholder="Ingrese una descripción del curso" formControlName="descripcion" [ngClass]="formularioCurso.get('descripcion')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
+                        <mat-error *ngIf="formularioCurso.get('descripcion')?.errors?.['required']">El campo descripción obligatorio.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Fecha Inicio</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fechaInicio" [ngClass]="formularioCurso.get('fechaInicio')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
+                        <mat-hint>dd/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="formularioCurso.get('fechaInicio')?.errors?.['required']" class="form-text text-danger invalid-feedback">El campo fecha inicio es obligatorio</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Fecha Fin</mat-label>
+                        <input matInput [matDatepicker]="picker1" formControlName="fechaFin" [ngClass]="formularioCurso.get('fechaFin')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                        <mat-error *ngIf="formularioCurso.get('fechaFin')?.errors?.['required']" class="form-text text-danger invalid-feedback">El campo fecha fin es obligatorio</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button type="submit" [disabled]="formularioCurso.invalid" class="btn btn-primary back-color" [mat-dialog-close]="true" cdkFocusInitial>guardar</button>
+    </mat-dialog-actions>
+</form>

@@ -26,7 +26,7 @@ import { CoreModule } from './components/core/core.module';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  // providers: [SharedModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

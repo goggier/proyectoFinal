@@ -1,0 +1,44 @@
+<h2 mat-dialog-title [appSizeCabeceras]="estiloSize">{{titulo}}</h2>
+<hr/>
+<form (ngSubmit)="guardar()" [formGroup]="formulario">
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Seleccione un alumno</mat-label>
+                        <mat-select formControlName="alumno" [ngClass]="formulario.get('alumno')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
+                            <mat-option *ngFor="let alumno of listaAlumnos" (onSelectionChange)="setEmailHtml(alumno)" [value]="alumno">{{ alumno.nombre }} {{ alumno.apellido }}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formulario.get('alumno')?.errors?.['required']">es obligatorio seleccionar un alumno.</mat-error>
+                    </mat-form-field><br>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>email</mat-label>
+                        <input [disabled]="disabled" matInput placeholder="ingrese un email" formControlName="email" [ngClass]="formulario.get('email')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
+                        <mat-error *ngIf="formulario.get('email')?.errors?.['required']">El campo email obligatorio.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Seleccione el curso al que se quiere inscribir</mat-label>
+                        <mat-select formControlName="curso" [ngClass]="formulario.get('curso')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
+                            <mat-option *ngFor="let curso of cursos" [value]="curso">{{ curso.nombre }}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formulario.get('curso')?.errors?.['required']">es obligatorio seleccionar un curso.</mat-error>
+                    </mat-form-field><br>
+                </div>
+            </div>
+        </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button type="submit" [disabled]="formulario.invalid" class="btn btn-primary back-color" [mat-dialog-close]="true" cdkFocusInitial>guardar</button>
+    </mat-dialog-actions>
+</form>
