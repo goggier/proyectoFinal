@@ -46,7 +46,7 @@ export class ListaIncripcionesComponent implements OnInit, OnDestroy {
     dialog.componentInstance.esNuevo = true;
     dialog.afterClosed().subscribe(alumno => {
       this.obtenerInscripcionesObservables();
-      //this.tabla1.renderRows();
+      this.tabla1.renderRows();
     });
   }
 
