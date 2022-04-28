@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Inscripcion } from 'src/app/components/core/interfaces/Inscripcion.interface';
 import { AlertaService } from 'src/app/components/core/services/alerta.service';
 import { InscripcionService } from 'src/app/components/core/services/inscripcion.service';
@@ -39,12 +39,28 @@ export class ListaIncripcionesComponent implements OnInit, OnDestroy {
     })
   }
 
+  // agregarNuevaInscripcion(){
+  //   const dialog = this.modalDialogAlumno.open(AbmIncripcionesComponent, {
+  //     hasBackdrop: false,
+  //   });
+  //   dialog.componentInstance.esNuevo = true;
+  //   dialog.afterClosed().subscribe({
+  //     next: inscripcion => {
+  //       this.obtenerInscripcionesObservables();
+  //       this.tabla1.renderRows();
+  //     },
+  //     error: error => {
+  //       console.error(error);
+  //     }
+  //   });
+  // }
+
   agregarNuevaInscripcion(){
     const dialog = this.modalDialogAlumno.open(AbmIncripcionesComponent, {
       hasBackdrop: false,
     });
     dialog.componentInstance.esNuevo = true;
-    dialog.afterClosed().subscribe(alumno => {
+    dialog.afterClosed().subscribe(inscripcion => {
       this.obtenerInscripcionesObservables();
       this.tabla1.renderRows();
     });
@@ -56,7 +72,7 @@ export class ListaIncripcionesComponent implements OnInit, OnDestroy {
       data: inscripcionSeleccionada
     });
     dialog.componentInstance.esNuevo = false;
-    dialog.afterClosed().subscribe(alumno => {
+    dialog.afterClosed().subscribe(inscripcion => {
       this.obtenerInscripcionesObservables();
       this.tabla1.renderRows();
     });

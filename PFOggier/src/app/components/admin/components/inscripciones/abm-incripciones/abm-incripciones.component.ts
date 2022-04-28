@@ -19,6 +19,7 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
 
   @Input() esNuevo: Boolean = true;
   formulario!: FormGroup;
+  selectedAlumno!: Alumno;
   disabled: boolean = true;
   titulo: string = 'Editar Inscripcion';
   datosSuscriptionObservable!: Subscription;
@@ -28,7 +29,7 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
     sizeCabecera : '20px'
   }
 
-  constructor(public form: FormBuilder,private inscripcionService: InscripcionService, private alertaService: AlertaService,public modalDialogAlumnoActive: MatDialogRef<AbmIncripcionesComponent>,
+  constructor(public form: FormBuilder,private inscripcionService: InscripcionService, private alertaService: AlertaService,public modalDialogActive: MatDialogRef<AbmIncripcionesComponent>,
     @ Inject(MAT_DIALOG_DATA) public inscripcionEditar: Inscripcion, private cursoService: CursosService, private alumnoService: AlumnoService) {
       this.formulario = form.group({
         alumno: new FormControl('', [Validators.required]),
@@ -45,6 +46,7 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
     }
     if(this.inscripcionEditar){
       this.formulario.get('alumno')?.setValue(this.inscripcionEditar.alumno);
+      this.selectedAlumno = this.inscripcionEditar.alumno;
       this.formulario.get('email')?.setValue(this.inscripcionEditar.alumno.email);
       this.formulario.get('curso')?.setValue(this.inscripcionEditar.curso);
       console.log('form value: ', this.formulario.value);
@@ -53,6 +55,14 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
 
   getAlumnos() {
     this.listaAlumnos = this.alumnoService.getAlumnos();
+  }
+
+  compareObjects(o1: any, o2: any): boolean {
+    return o1.name === o2.name && o1.id === o2.id;
+  }
+
+  compareCursos(o1: any, o2: any): boolean {
+    return o1.name === o2.name && o1.id === o2.id;
   }
 
   getCursosObservables() {
@@ -78,7 +88,7 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
           this.alertaService.mostrarAlertaExito(`El alumno: ${inscripcion.alumno.nombre} ha sido inscripto con Éxito al curso ${inscripcion.curso.nombre}!`).then((resolve) => {
             if (resolve.value) {
               this.formulario.reset();
-              this.modalDialogAlumnoActive.close(data);
+              this.modalDialogActive.close(data);
             }
           });
         },
@@ -92,7 +102,7 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
           this.alertaService.mostrarAlertaExito(`la incripcion del alumno: ${inscripcion.alumno.nombre} ha sido modificada con Éxito!`).then((resolve) => {
             if (resolve.value) {
               this.formulario.reset();
-              this.modalDialogAlumnoActive.close(data);
+              this.modalDialogActive.close(data);
             }
           });
         },

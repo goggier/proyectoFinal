@@ -2,5 +2,9 @@
     <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async"> 
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
-    <span>Alumnos</span>
+    <span>Administrador</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon ms-auto" title="Salir" aria-label="Example icon-button with heart icon">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
 </mat-toolbar>

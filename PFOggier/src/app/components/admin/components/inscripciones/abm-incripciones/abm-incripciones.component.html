@@ -7,7 +7,7 @@
                 <div class="mb-3">
                     <mat-form-field class="w-100" appearance="fill">
                         <mat-label>Seleccione un alumno</mat-label>
-                        <mat-select formControlName="alumno" [ngClass]="formulario.get('alumno')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
+                        <mat-select formControlName="alumno" [compareWith]="compareObjects" [ngClass]="formulario.get('alumno')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
                             <mat-option *ngFor="let alumno of listaAlumnos" (onSelectionChange)="setEmailHtml(alumno)" [value]="alumno">{{ alumno.nombre }} {{ alumno.apellido }}</mat-option>
                         </mat-select>
                         <mat-error *ngIf="formulario.get('alumno')?.errors?.['required']">es obligatorio seleccionar un alumno.</mat-error>
@@ -27,7 +27,7 @@
                 <div class="mb-3">
                     <mat-form-field class="w-100" appearance="fill">
                         <mat-label>Seleccione el curso al que se quiere inscribir</mat-label>
-                        <mat-select formControlName="curso" [ngClass]="formulario.get('curso')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
+                        <mat-select formControlName="curso" [compareWith]="compareCursos" [ngClass]="formulario.get('curso')?.errors?.['required'] ? 'is-invalid' : 'is-valid'">
                             <mat-option *ngFor="let curso of cursos" [value]="curso">{{ curso.nombre }}</mat-option>
                         </mat-select>
                         <mat-error *ngIf="formulario.get('curso')?.errors?.['required']">es obligatorio seleccionar un curso.</mat-error>
