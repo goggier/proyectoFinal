@@ -40,6 +40,7 @@ import { InscripcionesModule } from './components/inscripciones/inscripciones.mo
   ],
   exports: [
     LayoutComponent
-  ]
+  ],
+  providers:[SharedModule]
 })
 export class AdminModule { }

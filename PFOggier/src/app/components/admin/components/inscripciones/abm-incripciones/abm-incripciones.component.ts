@@ -57,7 +57,7 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
     this.listaAlumnos = this.alumnoService.getAlumnos();
   }
 
-  compareObjects(o1: any, o2: any): boolean {
+  compareInscripciones(o1: any, o2: any): boolean {
     return o1.name === o2.name && o1.id === o2.id;
   }
 
