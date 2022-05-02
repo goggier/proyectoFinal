@@ -18,7 +18,16 @@ export class AlertaService {
   }
 
   showLoading() {
+    swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor...'
+    });
     swal.showLoading();
+  }
+
+  close() {
+    swal.close();
   }
 
   //En este caso el titulo va a ser siempre el mismo, va a cambiar el text, por lo tanto se recibe un Any sino da error 

@@ -4,7 +4,8 @@
   </button>
     <span>Administrador</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon ms-auto" title="Salir" aria-label="Example icon-button with heart icon">
+    <span>{{leerUsuario()}}</span>
+    <button mat-icon-button (click)="logout()" class="example-icon favorite-icon ms-auto" title="Salir" aria-label="Example icon-button with heart icon">
       <mat-icon>exit_to_app</mat-icon>
     </button>
 </mat-toolbar>
