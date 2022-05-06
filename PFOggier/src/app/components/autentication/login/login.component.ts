@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
         }
       },
       error: error => {
-        console.error(error);
+        this.alertaService.close();
+        this.alertaService.mostrarAlertaError('credenciales incorrectas');
       }
     })
   }
