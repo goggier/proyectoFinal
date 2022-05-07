@@ -7,4 +7,6 @@ export interface Usuario {
     dni: number;
     email: string;
     rol: string;
+    celular: string;
+    fechaIngreso: string;
 }
