@@ -12,4 +12,12 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  esAdministrador(): boolean {
+    if (localStorage.getItem('session') === 'admin'){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 }
