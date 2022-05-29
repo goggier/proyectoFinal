@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Alumno } from '../interfaces/Alumno.interface';
+import { environment } from 'src/environments/environment';
+import { Usuario } from '../interfaces/Usuario.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +67,7 @@ export class AlumnoService {
     }
   ]
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getAlumnos() {
     return this.listaAlumnos;
@@ -86,6 +90,22 @@ export class AlumnoService {
 
   deleteAlumno(id: number) {
     this.listaAlumnos = this.listaAlumnos.filter(alumno => alumno.id !== id);	
+  }
+
+  getAlumnosApi(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${environment.urlApi}/users?search='alumno'`);
+  }
+
+  saveAlumnoApi(alumno: Usuario) {
+    return this.http.post(`${environment.urlApi}/users`, alumno);
+  }
+
+  editAlumnoApi(alumno: Usuario){
+    return this.http.put(`${environment.urlApi}/users/${alumno.id}`, alumno)
+  }
+
+  deleteAlumnoApi(id: number){
+    return this.http.delete(`${environment.urlApi}/users/${id}`);
   }
   
 }
