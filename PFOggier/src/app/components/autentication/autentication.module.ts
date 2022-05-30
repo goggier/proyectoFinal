@@ -8,11 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // MODULOS
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AutenticationRoutingModule } from './autentication-routing.module';
 import { AutenticationComponent } from './autentication/autentication.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { authFeatureKey, authReducer } from './login/state/login.reducer';
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    StoreModule.forFeature(authFeatureKey, authReducer)
   ],
   providers:[SharedModule]
 })
