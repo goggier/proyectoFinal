@@ -1,11 +1,14 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
+import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { Inscripcion } from 'src/app/components/core/interfaces/Inscripcion.interface';
 import { AlertaService } from 'src/app/components/core/services/alerta.service';
 import { InscripcionService } from 'src/app/components/core/services/inscripcion.service';
 import { AbmIncripcionesComponent } from '../abm-incripciones/abm-incripciones.component';
+import { cargarInscripciones } from '../state/inscripcion.action';
+import { selectorInscripciones } from '../state/inscripcion.selector';
 
 @Component({
   selector: 'app-lista-incripciones',
@@ -26,17 +29,17 @@ export class ListaIncripcionesComponent implements OnInit, OnDestroy {
     sizeCabecera : '20px'
   }
 
-  constructor( private inscripcionService : InscripcionService, public modalDialogAlumno: MatDialog, private alertaService: AlertaService ) { }
+  constructor( private inscripcionService : InscripcionService, public modalDialogAlumno: MatDialog, private alertaService: AlertaService, private store: Store ) { }
 
   ngOnInit(): void {
     this.obtenerInscripcionesObservables();
   }
 
   obtenerInscripcionesObservables() {
-    this.datosSuscriptionObservable =  this.inscripcionService.obtenerInscripciones().subscribe((respuesta) => {
-      this.inscripciones = respuesta;
-      console.log(this.inscripciones);
-    })
+    this.store.dispatch(cargarInscripciones());
+    this.datosSuscriptionObservable = this.store.select(selectorInscripciones).subscribe((state)=>{
+      this.inscripciones = state.inscripciones;
+    });
   }
 
   // agregarNuevaInscripcion(){

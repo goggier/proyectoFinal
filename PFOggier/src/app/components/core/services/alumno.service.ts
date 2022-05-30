@@ -101,7 +101,6 @@ export class AlumnoService {
   }
 
   editAlumno(alumno: Usuario, id : number){
-
     return this.http.put(`${environment.urlApi}/users/${id}`, alumno)
   }
 

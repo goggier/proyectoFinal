@@ -4,7 +4,10 @@ import { ListaIncripcionesComponent } from './lista-incripciones/lista-incripcio
 import { AbmIncripcionesComponent } from './abm-incripciones/abm-incripciones.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/components/shared/shared.module';
-
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { inscripcionesFeatureKey, inscripcionesReducer } from './state/inscripcion.reducer';
+import { InscripcionesEffects } from './state/inscripcion.effects';
 // MODULOS
 
 
@@ -19,7 +22,9 @@ import { SharedModule } from 'src/app/components/shared/shared.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature(inscripcionesFeatureKey, inscripcionesReducer),
+    EffectsModule.forFeature([InscripcionesEffects])
   ],
   exports: [
     ListaIncripcionesComponent
