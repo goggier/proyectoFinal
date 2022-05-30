@@ -22,27 +22,5 @@ export const inscripcionesReducer = createReducer(
   }),
   on(InscripcionesActions.inscripcionesCargadas, (state, { inscripciones }) => {
     return { ...state, cargando: false, inscripciones };
-  }),
-
-  on(InscripcionesActions.cargarInscripcionesCurso, (state) => {
-    return { ...state, cargando: true };
-  }),
-
-  on(
-    InscripcionesActions.inscripcionesCargadasCurso,
-    (state, { inscripciones }) => {
-      return { ...state, cargando: false, inscripciones };
-    }
-  ),
-
-  on(InscripcionesActions.cargarInscripcionesAlumno, (state) => {
-    return { ...state, cargando: true };
-  }),
-
-  on(
-    InscripcionesActions.inscripcionesCargadasAlumno,
-    (state, { inscripciones }) => {
-      return { ...state, cargando: false, inscripciones };
-    }
-  )
+  })
 );

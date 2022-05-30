@@ -6,11 +6,7 @@ import * as InscripcionesActions from './inscripcion.action';
 // import { cursosCargados } from '../../cursos/state/curso.actions';
 import {
   cargarInscripciones,
-  cargarInscripcionesCurso,
-  cargarInscripcionesAlumno,
-  inscripcionesCargadas,
-  inscripcionesCargadasCurso,
-  inscripcionesCargadasAlumno,
+  inscripcionesCargadas
 } from './inscripcion.action';
 import { InscripcionService } from 'src/app/components/core/services/inscripcion.service';
 
@@ -31,34 +27,4 @@ export class InscripcionesEffects {
       )
     )
   );
-
-//   cargarInscripcionesCursoEffect = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(cargarInscripcionesCurso),
-//       exhaustMap((idCurso) =>
-//         this.inscripcionesService
-//           .obtenerDatosInscripcionesFiltradoCurso(idCurso)
-//           .pipe(
-//             map((inscripciones) =>
-//               inscripcionesCargadasCurso({ inscripciones })
-//             )
-//           )
-//       )
-//     )
-//   );
-
-//   cargarInscripcionesAlumnoEffect = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(cargarInscripcionesAlumno),
-//       exhaustMap((idAlumno) =>
-//         this.inscripcionesService
-//           .obtenerDatosInscripcionesFiltradoAlumno(idAlumno)
-//           .pipe(
-//             map((inscripciones) =>
-//               inscripcionesCargadasAlumno({ inscripciones })
-//             )
-//           )
-//       )
-//     )
-//   );
 }
