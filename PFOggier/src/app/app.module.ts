@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 //COMPONENTES ANGULAR
 import { SharedModule } from './components/shared/shared.module';
 import { CoreModule } from './components/core/core.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CoreModule } from './components/core/core.module';
     AdminModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([])
   ],
   // providers: [SharedModule],
   bootstrap: [AppComponent]

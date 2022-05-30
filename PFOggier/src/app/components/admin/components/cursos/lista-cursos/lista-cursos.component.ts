@@ -1,11 +1,14 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
+import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { Curso } from 'src/app/components/core/interfaces/Curso.interface';
 import { AlertaService } from 'src/app/components/core/services/alerta.service';
 import { CursosService } from 'src/app/components/core/services/cursos.service';
 import { AbmCursosComponent } from '../abm-cursos/abm-cursos.component';
+import { cargarCursos } from '../state/curso.action';
+import { selectorCurso } from '../state/curso.selector';
 
 @Component({
   selector: 'app-lista-cursos',
@@ -26,7 +29,7 @@ export class ListaCursosComponent implements OnInit, OnDestroy {
     sizeCabecera : '20px'
   }
   
-  constructor(private cursoService: CursosService, public modalDialogAlumno: MatDialog, private alertaService: AlertaService) { }
+  constructor(private cursoService: CursosService, public modalDialogAlumno: MatDialog, private alertaService: AlertaService, private store: Store) { }
 
 
 
@@ -34,11 +37,18 @@ export class ListaCursosComponent implements OnInit, OnDestroy {
     this.obtenerCursosObservables();
   }
 
+  // obtenerCursosObservables() {
+  //   this.datosSuscriptionObservable =  this.cursoService.obtenerCursos().subscribe((respuesta) => {
+  //     this.cursos = respuesta;
+  //     console.log('rta api:', this.cursos)
+  //   })
+  // }
+
   obtenerCursosObservables() {
-    this.datosSuscriptionObservable =  this.cursoService.obtenerCursos().subscribe((respuesta) => {
-      this.cursos = respuesta;
-      console.log('rta api:', this.cursos)
-    })
+    this.store.dispatch(cargarCursos());
+    this.datosSuscriptionObservable = this.store.select(selectorCurso).subscribe((state)=>{
+      this.cursos = state.cursos;
+    });
   }
 
   agregarNuevoAlumno(){
