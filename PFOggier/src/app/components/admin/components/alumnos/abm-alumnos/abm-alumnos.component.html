@@ -26,10 +26,10 @@
             <div class="col-6">
                 <div class="mb-3">
                     <mat-form-field class="w-100" appearance="fill">
-                        <mat-label>Edad</mat-label>
-                        <input matInput placeholder="Ingrese la edad del alumno" formControlName="edad" [ngClass]="formularioAlumno.get('edad')?.errors?.['required'] || formularioAlumno.get('edad')?.errors?.['pattern']? 'is-invalid':'is-valid'">
-                        <mat-error *ngIf="formularioAlumno.get('edad')?.errors?.['required']">El campo edad es obligatorio</mat-error>
-                        <mat-error *ngIf="formularioAlumno.get('edad')?.errors?.['pattern']">El campo edad debe ser numérico</mat-error>
+                        <mat-label>DNI</mat-label>
+                        <input matInput placeholder="Ingrese el DNI del alumno" formControlName="dni" [ngClass]="formularioAlumno.get('dni')?.errors?.['required'] || formularioAlumno.get('dni')?.errors?.['pattern']? 'is-invalid':'is-valid'">
+                        <mat-error *ngIf="formularioAlumno.get('dni')?.errors?.['required']">El campo dni es obligatorio</mat-error>
+                        <mat-error *ngIf="formularioAlumno.get('dni')?.errors?.['pattern']">El campo dni debe ser numérico</mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -63,6 +63,28 @@
                             formularioAlumno.get('celular')?.errors?.['pattern']? 'is-invalid':'is-valid'">
                         <mat-error *ngIf="formularioAlumno.get('celular')?.errors?.['required']" class="form-text text-danger invalid-feedback">El campo celular es obligatorio</mat-error>
                         <mat-error *ngIf="formularioAlumno.get('celular')?.errors?.['pattern']" class="form-text text-danger invalid-feedback">El campo celular debe ser numérico</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Usuario</mat-label>
+                        <input matInput placeholder="ingrese el nombre de usuario del alumno" formControlName="usuario" [ngClass]="formularioAlumno.get('usuario')?.errors?.['required'] || 
+                            formularioAlumno.get('usuario')?.errors?.['minlength'] ? 'is-invalid':'is-valid'">
+                        <mat-error *ngIf="formularioAlumno.get('usuario')?.errors?.['required']">El campo usuario es obligatorio.</mat-error>
+                        <mat-error *ngIf="formularioAlumno.get('usuario')?.errors?.['minlength']">El nombre de usuario debe contener mas de 4 letras.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput placeholder="ingrese el nombre del alumno" formControlName="password" [ngClass]="formularioAlumno.get('password')?.errors?.['required'] || 
+                            formularioAlumno.get('password')?.errors?.['minlength'] ? 'is-invalid':'is-valid'">
+                        <mat-error *ngIf="formularioAlumno.get('password')?.errors?.['required']">el password es obligatorio.</mat-error>
+                        <mat-error *ngIf="formularioAlumno.get('password')?.errors?.['minlength']">El password debe contener mas de 6 letras.</mat-error>
                     </mat-form-field>
                 </div>
             </div>

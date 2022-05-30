@@ -69,42 +69,43 @@ export class AlumnoService {
 
   constructor(private http: HttpClient) { }
 
-  getAlumnos() {
-    return this.listaAlumnos;
+  // getAlumnos() {
+  //   return this.listaAlumnos;
+  // }
+
+  // saveAlumno(alumno: Alumno) {
+  //   let idMax = Math.max(...this.listaAlumnos.map(alumno => alumno.id));
+  //   alumno.id = idMax + 1;
+  //   this.listaAlumnos.push(alumno);
+  // }
+
+  // editAlumno(alumno: Alumno, id: number) {
+  //   this.listaAlumnos[id-1].nombre = alumno.nombre;
+  //   this.listaAlumnos[id-1].apellido = alumno.apellido;
+  //   this.listaAlumnos[id-1].celular = alumno.celular;
+  //   this.listaAlumnos[id-1].edad = alumno.edad;
+  //   this.listaAlumnos[id-1].email = alumno.email;
+  //   this.listaAlumnos[id-1].fechaIngreso = alumno.fechaIngreso;
+  // }
+
+  // deleteAlumno(id: number) {
+  //   this.listaAlumnos = this.listaAlumnos.filter(alumno => alumno.id !== id);	
+  // }
+
+  getAlumnos(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${environment.urlApi}/users?search=alumno`);
   }
 
-  saveAlumno(alumno: Alumno) {
-    let idMax = Math.max(...this.listaAlumnos.map(alumno => alumno.id));
-    alumno.id = idMax + 1;
-    this.listaAlumnos.push(alumno);
-  }
-
-  editAlumno(alumno: Alumno, id: number) {
-    this.listaAlumnos[id-1].nombre = alumno.nombre;
-    this.listaAlumnos[id-1].apellido = alumno.apellido;
-    this.listaAlumnos[id-1].celular = alumno.celular;
-    this.listaAlumnos[id-1].edad = alumno.edad;
-    this.listaAlumnos[id-1].email = alumno.email;
-    this.listaAlumnos[id-1].fechaIngreso = alumno.fechaIngreso;
-  }
-
-  deleteAlumno(id: number) {
-    this.listaAlumnos = this.listaAlumnos.filter(alumno => alumno.id !== id);	
-  }
-
-  getAlumnosApi(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`${environment.urlApi}/users?search='alumno'`);
-  }
-
-  saveAlumnoApi(alumno: Usuario) {
+  saveAlumno(alumno: Usuario) {
     return this.http.post(`${environment.urlApi}/users`, alumno);
   }
 
-  editAlumnoApi(alumno: Usuario){
-    return this.http.put(`${environment.urlApi}/users/${alumno.id}`, alumno)
+  editAlumno(alumno: Usuario, id : number){
+
+    return this.http.put(`${environment.urlApi}/users/${id}`, alumno)
   }
 
-  deleteAlumnoApi(id: number){
+  deleteAlumno(id: number){
     return this.http.delete(`${environment.urlApi}/users/${id}`);
   }
   

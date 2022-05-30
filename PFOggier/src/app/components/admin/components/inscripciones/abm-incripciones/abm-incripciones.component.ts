@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/components/core/interfaces/Alumno.interface';
 import { Curso } from 'src/app/components/core/interfaces/Curso.interface';
 import { Inscripcion } from 'src/app/components/core/interfaces/Inscripcion.interface';
+import { Usuario } from 'src/app/components/core/interfaces/Usuario.interface';
 import { AlertaService } from 'src/app/components/core/services/alerta.service';
 import { AlumnoService } from 'src/app/components/core/services/alumno.service';
 import { CursosService } from 'src/app/components/core/services/cursos.service';
@@ -23,7 +24,7 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
   disabled: boolean = true;
   titulo: string = 'Editar Inscripcion';
   datosSuscriptionObservable!: Subscription;
-  listaAlumnos: Alumno[] = [];
+  listaAlumnos: Usuario[] = [];
   cursos: Curso[] = [];
   estiloSize = {
     sizeCabecera : '20px'
@@ -54,7 +55,10 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
   }
 
   getAlumnos() {
-    this.listaAlumnos = this.alumnoService.getAlumnos();
+    this.datosSuscriptionObservable =  this.alumnoService.getAlumnos().subscribe((respuesta) => {
+      this.listaAlumnos = respuesta;
+      console.log('rta api:', this.listaAlumnos)
+    })
   }
 
   compareInscripciones(o1: any, o2: any): boolean {
@@ -71,7 +75,7 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
     })
   }
 
-  setEmailHtml(alumno: Alumno){
+  setEmailHtml(alumno: Usuario){
     this.formulario.get('email')?.setValue(alumno.email);
   }
 
@@ -116,5 +120,5 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.datosSuscriptionObservable.unsubscribe();
   }
-
+  
 }
