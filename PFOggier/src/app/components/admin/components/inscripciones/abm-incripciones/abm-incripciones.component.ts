@@ -50,14 +50,12 @@ export class AbmIncripcionesComponent implements OnInit, OnDestroy {
       this.selectedAlumno = this.inscripcionEditar.alumno;
       this.formulario.get('email')?.setValue(this.inscripcionEditar.alumno.email);
       this.formulario.get('curso')?.setValue(this.inscripcionEditar.curso);
-      console.log('form value: ', this.formulario.value);
     }
   }
 
   getAlumnos() {
     this.datosSuscriptionObservable =  this.alumnoService.getAlumnos().subscribe((respuesta) => {
       this.listaAlumnos = respuesta;
-      console.log('rta api:', this.listaAlumnos)
     })
   }
 

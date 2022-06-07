@@ -106,5 +106,4 @@ export class ListaIncripcionesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.datosSuscriptionObservable.unsubscribe();
   }
-
 }

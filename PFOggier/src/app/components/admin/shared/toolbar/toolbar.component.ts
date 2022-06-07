@@ -32,7 +32,6 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(selectorAuth).subscribe((state)=>{
       this.usuario = state.usuarioActivo;
-      console.log(this.usuario);
     });
   }
 
